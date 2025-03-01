@@ -152,21 +152,16 @@ LangSmith trace: https://smith.langchain.com/public/9653a9cd-927d-4223-8db5-45d2
 
 Because my provided URL documents don't have necessary information to answer this question, so the agent went for web_search to find the answer.
 
-```python
-{
-  "question": "what is agent memory?",
-  "generation": "Agent memory is a crucial component that allows AI to store and recall information across interactions. It enables AI models to retain information rather than treating every query as a new conversation. Different types of memory are used in AI agents.",
-  "web_search": true
-}
-```
+
+- `question`: `what is agent memory?`
+- `generation`: `Agent memory is a crucial component that allows AI to store and recall information across interactions. It enables AI models to retain information rather than treating every query as a new conversation. Different types of memory are used in AI agents.`
+- `web_search`: true
 
 Documents
 
-```python
-In general, the memory for an agent is something that we provide via context in the prompt passed to LLM that helps the agent to better plan
+`In general, the memory for an agent is something that we provide via context in the prompt passed to LLM that helps the agent to better plan
 Understanding Agent Memory in AI: Types, Use Cases, and Implementation | by Siladitya Ghosh | Feb, 2025 | Medium Understanding Agent Memory in AI: Types, Use Cases, and Implementation The secret lies in agent memory — a crucial component that allows AI to store and recall information across interactions. What agent memory is and why it’s essential The different types of memory used in AI agents Real-world use cases of memory in AI systems By the end, you’ll have a solid understanding of how AI agents use memory and how to implement it in your own projects. What is Agent Memory? Agent memory allows AI models to retain information across interactions rather than treating every query as a new conversation. Types of Agent Memory
-Enroll now: https://bit.ly/3YwWJeR Build agentic memory into your applications with LLMs as Operating Systems: Agent Memory, a short course
-```
+Enroll now: https://bit.ly/3YwWJeR Build agentic memory into your applications with LLMs as Operating Systems: Agent Memory, a short course`
 
 <!-- TOC --><a name="3-llm-technology-stack"></a>
 ## 3. LLM Technology Stack
