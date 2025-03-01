@@ -421,12 +421,6 @@ PYTHONPATH=/Users/junfanzhu/Desktop/langgraph
 <!-- TOC --><a name="16-future-improvements"></a>
 ## 16. Future Improvements
 
--   Implement long term memory.
--   Implement dynamic tool selection.
--   Add more sophisticated document grading algorithms.
--   Add more diverse data sources.
--   Improve web search result processing.
--   Add user feedback loops to refine the system.
 
 <!-- TOC --><a name="17-additional-information"></a>
 ## 17. Additional Information
