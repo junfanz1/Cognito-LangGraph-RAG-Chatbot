@@ -12,40 +12,39 @@ This project implements an advanced Retrieval Augmented Generation (RAG) workflo
 ## 3. LLM Technology Stack
 
 -   **LangChain:**
-    -      Used for building LLM applications by providing abstractions for LLMs, vector stores, and other components.
-    -      Facilitates the creation of chains and agents.
+    - Used for building LLM applications by providing abstractions for LLMs, vector stores, and other components.
+    - Facilitates the creation of chains and agents.
 -   **LangGraph:**
-    -      A framework for building stateful, multi-actor applications with LLMs.
-    -      Enables the creation of complex workflows with conditional logic and state management.
+    - A framework for building stateful, multi-actor applications with LLMs.
+    - Enables the creation of complex workflows with conditional logic and state management.
 -   **OpenAI:**
-    -      Provides powerful LLMs (e.g., GPT-3.5, GPT-4) for generating responses and embeddings.
+    - Provides powerful LLMs (e.g., GPT-3.5, GPT-4) for generating responses and embeddings.
 -   **ChromaDB:**
-    -      A vector database for storing and retrieving document embeddings.
-    -   `Chroma.from_documents` is used to create and persist the vectorstore.
-    -   `Chroma.as_retriever()` is used to create a retriever object.
+    - A vector database for storing and retrieving document embeddings.
+    - `Chroma.from_documents` is used to create and persist the vectorstore.
+    - `Chroma.as_retriever()` is used to create a retriever object.
 -   **Tavily Search:**
-    -      A search API for retrieving web search results.
-    -   `TavilySearchResults` tool is used to execute web searches.
+    - A search API for retrieving web search results.
+    - `TavilySearchResults` tool is used to execute web searches.
 -   **Python:**
-    -      The primary programming language for implementing the project.
 -   **dotenv:**
-    -      Used for managing environment variables, such as API keys, securely.
+    - Used for managing environment variables, such as API keys, securely.
 
 ## 4. Challenges and Difficulties
 
--      Ensuring document relevance to user queries.
--      Reducing LLM hallucinations.
--      Orchestrating complex workflows with multiple LLM calls.
--      Integrating web search seamlessly.
+-  Ensuring document relevance to user queries.
+-  Reducing LLM hallucinations.
+-  Orchestrating complex workflows with multiple LLM calls.
+-  Integrating web search seamlessly.
 -   Managing state within the LangGraph workflow.
 -   Efficiently grading retrieved documents.
 
 ## 5. Future Business Impact and Further Improvements
 
--      Improved customer support systems.
--      Enhanced knowledge management platforms.
--      More accurate and reliable chatbots.
--      Automated content generation.
+-  Improved customer support systems.
+-  Enhanced knowledge management platforms.
+-  More accurate and reliable chatbots.
+-  Automated content generation.
 -   Future Improvements:
     -   Implementing more sophisticated document grading algorithms.
     -   Adding more diverse data sources.
@@ -55,24 +54,24 @@ This project implements an advanced Retrieval Augmented Generation (RAG) workflo
 
 ## 6. Target Audience and Benefits
 
--      Developers and researchers interested in advanced RAG systems.
--      Businesses seeking to improve information retrieval and question-answering capabilities.
--      Benefits:
-    -      Improved accuracy and reliability of LLM responses.
-    -      Reduced hallucinations.
-    -      Enhanced information retrieval.
+-  Developers and researchers interested in advanced RAG systems.
+-  Businesses seeking to improve information retrieval and question-answering capabilities.
+-  Benefits:
+    -  Improved accuracy and reliability of LLM responses.
+    -  Reduced hallucinations.
+    -  Enhanced information retrieval.
     -   Modular and extensible architecture.
 
 ## 7. Advantages and Disadvantages
 
 -   **Advantages:**
-    -      Robust workflow with document grading and web search fallback.
-    -      Modular and extensible design.
-    -      Improved accuracy and reliability.
+    - Robust workflow with document grading and web search fallback.
+    -  Modular and extensible design.
+    -  Improved accuracy and reliability.
 -   **Disadvantages:**
-    -      Increased complexity compared to simpler RAG systems.
-    -      Potential latency due to multiple LLM calls and web searches.
-    -   Relies on external API's which can have cost associated.
+    -  Increased complexity compared to simpler RAG systems.
+    -  Potential latency due to multiple LLM calls and web searches.
+    -  Relies on external API's which can have cost associated.
 
 ## 8. Tradeoffs
 
@@ -82,22 +81,28 @@ This project implements an advanced Retrieval Augmented Generation (RAG) workflo
 
 ## 9. Highlight and Summary
 
-The core of this project is to build a robust and reliable question-answering system using Retrieval Augmented Generation, but with a focus on mitigating common LLM challenges like hallucinations and irrelevant responses. We've implemented an advanced RAG pipeline that goes beyond basic retrieval. First, we leverage LangGraph to orchestrate a stateful workflow, which allows us to manage complex interactions between different components. This is crucial because we're not just retrieving and generating; we're also grading the relevance of retrieved documents. The key innovation here is the 'grade_documents' node. We use an LLM to assess the semantic relevance of each retrieved document to the user's query. If a document is deemed irrelevant, we trigger a web search using Tavily Search as a fallback, ensuring that the final response is comprehensive and accurate. This conditional logic, managed by LangGraph, is what distinguishes this system. We've also focused on modularity. Each step—retrieval, grading, web search, and generation—is encapsulated in its own node, making the system highly extensible. We're using ChromaDB for efficient vector storage and retrieval, and OpenAI's LLMs for both embedding and generation. In essence, this project tackles the 'garbage in, garbage out' problem by actively filtering and augmenting the retrieved context. The LangGraph framework allows us to create a pipeline that dynamically adapts to the quality of retrieved information, resulting in more reliable and accurate responses compared to a basic RAG setup. This design shows an understanding of how to build complex LLM applications that address real-world challenges."
+The core of this project is to build a robust and reliable question-answering system using Retrieval Augmented Generation, but with a focus on mitigating common LLM challenges like hallucinations and irrelevant responses. We've implemented an advanced RAG pipeline that goes beyond basic retrieval. 
+
+First, we leverage LangGraph to orchestrate a stateful workflow, which allows us to manage complex interactions between different components. This is crucial because we're not just retrieving and generating; we're also grading the relevance of retrieved documents. The key innovation here is the 'grade_documents' node. We use an LLM to assess the semantic relevance of each retrieved document to the user's query. If a document is deemed irrelevant, we trigger a web search using Tavily Search as a fallback, ensuring that the final response is comprehensive and accurate. This conditional logic, managed by LangGraph, is what distinguishes this system. 
+
+We've also focused on modularity. Each step—retrieval, grading, web search, and generation—is encapsulated in its own node, making the system highly extensible. We're using ChromaDB for efficient vector storage and retrieval, and OpenAI's LLMs for both embedding and generation. 
+
+In essence, this project tackles the 'garbage in, garbage out' problem by actively filtering and augmenting the retrieved context. The LangGraph framework allows us to create a pipeline that dynamically adapts to the quality of retrieved information, resulting in more reliable and accurate responses compared to a basic RAG setup. This design shows an understanding of how to build complex LLM applications that address real-world challenges."
 
 ## 10. Future Enhancements
 
--      Implement more sophisticated document grading algorithms.
--      Add more diverse data sources.
--      Improve web search result processing.
--      Add user feedback loops to refine the system.
+-  Implement more sophisticated document grading algorithms.
+-  Add more diverse data sources.
+-  Improve web search result processing.
+-  Add user feedback loops to refine the system.
 -   Implement long term memory.
 -   Implement dynamic tool selection.
 
 ## 11. Prerequisites
 
--      Python 3.7+
--      OpenAI API key
--      Tavily API key
+- Python 3.7+
+-  OpenAI API key
+-  Tavily API key
 -   Install required packages: `pip install -r requirements.txt`
 
 ## 12. Setup
@@ -106,16 +111,60 @@ The core of this project is to build a robust and reliable question-answering sy
 2.  Install the required packages: `pip install -r requirements.txt`
 3.  Create a `.env` file and add your OpenAI and Tavily API keys:
 
-    ```
+```
 OPENAI_API_KEY=
 LANGCHAIN_API_KEY=
 LANGCHAIN_PROJECT=
 LANGCHAIN_TRACING_V2=true
 TAVILY_API_KEY=
 PYTHONPATH=/Users/junfanzhu/Desktop/langgraph
-    ```
+```
 
 4.  Run the main application: `python graph/graph.py`
+
+Input:
+
+- a list of URLs
+
+```python
+urls = [
+    "https://lilianweng.github.io/posts/2024-11-28-reward-hacking/",
+    "https://lilianweng.github.io/posts/2024-07-07-hallucination/",
+    "https://lilianweng.github.io/posts/2024-04-12-diffusion-video/",
+    "https://lilianweng.github.io/posts/2024-02-05-human-data-quality/",
+    "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/"
+]
+```
+
+- Question:
+
+```python
+what is agent memory?
+```
+
+Output:
+
+```python
+Hello Advanced RAG!
+---Retrieving---
+---check document relevance to question---
+---grade: document not relevant---
+---grade: document not relevant---
+---grade: document not relevant---
+---grade: document not relevant---
+---assess granted documents---
+---decision: not all docs are relevant to question ---
+---web search---
+---generate---
+{'question': 'what is agent memory?', 'generation': 'Agent memory is a crucial component that allows AI to store and recall information across interactions. It enables AI models to retain information rather than treating every query as a new conversation. Different types of memory are used in AI agents.', 'web_search': True, 'documents': [Document(metadata={}, page_content='In general, the memory for an agent is something that we provide via context in the prompt passed to LLM that helps the agent to better plan\nUnderstanding Agent Memory in AI: Types, Use Cases, and Implementation | by Siladitya Ghosh | Feb, 2025 | Medium Understanding Agent Memory in AI: Types, Use Cases, and Implementation The secret lies in agent memory — a crucial component that allows AI to store and recall information across interactions. What agent memory is and why it’s essential The different types of memory used in AI agents Real-world use cases of memory in AI systems By the end, you’ll have a solid understanding of how AI agents use memory and how to implement it in your own projects. What is Agent Memory? Agent memory allows AI models to retain information across interactions rather than treating every query as a new conversation. Types of Agent Memory\nEnroll now: https://bit.ly/3YwWJeR Build agentic memory into your applications with LLMs as Operating Systems: Agent Memory, a short course')]}
+
+Process finished with exit code 0
+```
+
+LangSmith trace: https://smith.langchain.com/public/9653a9cd-927d-4223-8db5-45d20dff1112/r
+
+![image](https://github.com/user-attachments/assets/71f89b84-c681-4328-bcbc-91b7307bffd3)
+
 
 ## 13. Code Explanation
 
@@ -234,7 +283,6 @@ PYTHONPATH=/Users/junfanzhu/Desktop/langgraph
     -   The retriever leverages document embeddings to find documents that are semantically similar to the query, even if they don't contain the exact keywords.
     -   By returning the retrieved documents and the original question, this function sets the stage for the subsequent steps in the workflow, such as grading and generation.
     -   The efficiency and accuracy of this retrieval step are critical for the overall performance of the RAG system, as it determines the initial set of documents that will
-
 
 ## 16. Future Improvements
 
