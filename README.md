@@ -93,7 +93,7 @@ Hello Advanced RAG!
 Process finished with exit code 0
 ```
 
-<img src="https://github.com/user-attachments/assets/ec8a739c-8f76-4080-baa7-21ddbc3524ff" width="50%" height="50%">
+<img src="https://github.com/user-attachments/assets/ec8a739c-8f76-4080-baa7-21ddbc3524ff" width="20%" height="20%">
 
 LangSmith trace: https://smith.langchain.com/public/9653a9cd-927d-4223-8db5-45d20dff1112/r
 
