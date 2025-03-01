@@ -5,7 +5,7 @@
 <!-- TOC --><a name="star-history"></a>
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=junfanz1/LangGraph-Documentation-Bot&type=Date)](https://star-history.com/#junfanz1/LangGraph-Documentation-Bot&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=junfanz1/Cognito-LangGraph-RAG&type=Date)](https://star-history.com/#junfanz1/Cognito-LangGraph-RAG&Date)
 
 <!-- TOC --><a name="content"></a>
 ## Content
