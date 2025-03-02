@@ -28,7 +28,10 @@
 - [14. How it Works](#14-how-it-works)
 - [15. Crucial Functions](#15-crucial-functions)
 - [16. Future Improvements](#16-future-improvements)
-- [17. Additional Information](#17-additional-information)
+- [17. Summary](#17-summary)
+   * [Project Highlights](#project-highlights)
+   * [Why LangGraph](#why-langgraph)
+   * [Additional Notes](#additional-notes)
 - [Acknowledgements](#acknowledgements)
 
 <!-- TOC end -->
@@ -487,16 +490,51 @@ PYTHONPATH=/Users/junfanzhu/Desktop/langgraph
 <!-- TOC --><a name="16-future-improvements"></a>
 ## 16. Future Improvements
 
+- LangGraph has a persistence layer via checkpoint object (save the state after each node execution, in persistence storage, e.g. SQLite). Can interrupt the graph and checkpoint the state of the graph and stop to get human feedback, and resume graph execution from the stop point.
+- Create conditional branches for parallel node execution
+- Use Docker to deploy to LangGraph Cloud, or use LangGraph Studio, LangGraph API to build LLM applications without frontend
 
-<!-- TOC --><a name="17-additional-information"></a>
-## 17. Additional Information
+<!-- TOC --><a name="17-summary"></a>
+## 17. Summary
 
-The project is based on the following papers:
-- Self-RAG: [Paper Title]
-- Adaptive RAG: [Paper Title]
-- Corrective RAG: [Paper Title]
+<!-- TOC --><a name="project-highlights"></a>
+### Project Highlights
 
-The LangGraph framework provides a persistence layer via checkpoint objects, allowing for interruption and resumption of graph execution, and enabling human feedback integration.
+RAG self-reflection workflow reflects on
+- Document we retrieve
+- Curate documents and add new info
+- Answers if grounded in documents
+
+We also implement a routing element, routing our request to correct datastore with info of the answer.
+
+Project is based on 3 ideas 
+
+- Self-RAG: reflect on the answer the model generated, check if answer is grounded in the docs.
+- Adaptive RAG: (1) taking the route to search on a website, then continuing downstream on the same logic (2) use RAG from the vector store. Use conditional entry points for routing.
+- Corrective RAG: Take query, vector search + semantic search, retrieve all docs, start to self-reflect and critique the docs, determine whether they’re relevant or not. If relevant, send to LLM, if not relevant, filter out and perform external Internet search to get more info, to augment our prompt with real-time online info, then augment the prompt and send to LLM.
+
+<!-- TOC --><a name="why-langgraph"></a>
+### Why LangGraph
+- LangGraph framework provides a persistence layer via checkpoint objects, allowing for interruption and resumption of graph execution, and enabling human feedback integration.
+- LangGraph is both reliable (like Chain, that architects our state machine) and flexible (like ReAct).
+- Flow Engineering (planning+testing), can build highly customized agents. (AutoGPT can do long-term planning, but we want to define the flow.) 
+- Controllability (we define control flow, LLM make decisions inside flow) + Persistence + Human-in-the-loop + Streaming. 
+- LangChain Agent. Memory (shared state across the graph), tools (nodes can call tools and modify state), planning (edges can route control flow based on LLM decisions).
+
+<!-- TOC --><a name="additional-notes"></a>
+### Additional Notes
+
+ReAct (Reason-Act)
+- Paradigm that integrates language models with reasoning and acting capabilities, allowing for dynamic reasoning and interaction with external environments to accomplish complex tasks.
+- Simplest agent is for-loop (ReAct), ReAct agents are flexible and any state is possible, but have poor reliability (eg. invoking the same tool always and stuck, due to hallucination, tool-misuse, task ambiguity, LLM non-determinism).
+
+Autonomy in LLM applications (5 levels): 
+- human code
+- LLM call: one-step only
+- Chain: multiple steps, but one-directional
+- Router (LangChain): decide output of steps and steps to take (but no cycles), still human-driven (not agent executed)
+- State Machine (LangGraph): Agent executed, where agent is a control flow controlled by LLM, use LLM to reason where to go in this flow and tools-calling to execute steps, agent can have cycles.
+
 
 <!-- TOC --><a name="acknowledgements"></a>
 ## Acknowledgements
