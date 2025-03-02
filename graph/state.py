@@ -1,8 +1,5 @@
 from typing import List, TypedDict
 
-from langchain_core.outputs import generation
-
-
 class GraphState(TypedDict):
     """
     include all the states we need for graph execution.
