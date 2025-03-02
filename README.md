@@ -18,17 +18,13 @@
 - [4. Challenges and Difficulties](#4-challenges-and-difficulties)
 - [5. Future Business Impact and Further Improvements](#5-future-business-impact-and-further-improvements)
 - [6. Target Audience and Benefits](#6-target-audience-and-benefits)
-- [7. Advantages and Disadvantages](#7-advantages-and-disadvantages)
-- [8. Tradeoffs](#8-tradeoffs)
-- [9. Highlight and Summary](#9-highlight-and-summary)
-- [10. Future Enhancements](#10-future-enhancements)
-- [11. Prerequisites](#11-prerequisites)
-- [12. Setup](#12-setup)
-- [13. Code Explanation](#13-code-explanation)
-- [14. How it Works](#14-how-it-works)
-- [15. Crucial Functions](#15-crucial-functions)
-- [16. Future Improvements](#16-future-improvements)
-- [17. Summary](#17-summary)
+- [7. Advantages, Disadvantages and Tradeoffs](#7-advantages-disadvantages-and-tradeoffs)
+- [8. Setup](#8-setup)
+- [9. Code Explanation](#9-code-explanation)
+- [10. How it Works](#10-how-it-works)
+- [11. Crucial Functions](#11-crucial-functions)
+- [12. Future Improvements](#12-future-improvements)
+- [13. Summary](#13-summary)
    * [Project Highlights](#project-highlights)
    * [Why LangGraph](#why-langgraph)
    * [Additional Notes](#additional-notes)
@@ -261,8 +257,8 @@ Benefits:
 - Reduced support costs: Automated responses to common queries.
 - Increased knowledge sharing: Facilitates the dissemination of information within organizations.
 
-<!-- TOC --><a name="7-advantages-and-disadvantages"></a>
-## 7. Advantages and Disadvantages
+<!-- TOC --><a name="7-advantages-disadvantages-and-tradeoffs"></a>
+## 7. Advantages, Disadvantages and Tradeoffs
 
 Advantages:
 
@@ -278,51 +274,21 @@ Disadvantages:
 - Complexity: Building and maintaining the system can be challenging.
 - Cost: Using LLMs can be expensive.
 
-<!-- TOC --><a name="8-tradeoffs"></a>
-## 8. Tradeoffs
+Tradeoffs
 
 - Accuracy vs. Speed: Balancing the need for accurate answers with the desire for fast response times.
 - Complexity vs. Maintainability: Weighing the benefits of a sophisticated system against the challenges of maintaining it.
 - Cost vs. Benefit: Evaluating the return on investment for using LLMs.
 
-<!-- TOC --><a name="9-highlight-and-summary"></a>
-## 9. Highlight and Summary
 
-This project offers a novel approach to documentation access and retrieval by incorporating a self-reflection workflow. By combining LLMs with a graph database and adaptive routing, it provides an efficient and user-friendly way to find accurate and relevant answers to questions. While there are challenges to overcome, the potential benefits are significant.
+<!-- TOC --><a name="8-setup"></a>
+## 8. Setup
 
-The core of this project is to build a robust and reliable question-answering system using Retrieval Augmented Generation, but with a focus on mitigating common LLM challenges like hallucinations and irrelevant responses. We've implemented an advanced RAG pipeline that goes beyond basic retrieval. 
-
-First, we leverage LangGraph to orchestrate a stateful workflow, which allows us to manage complex interactions between different components. This is crucial because we're not just retrieving and generating; we're also grading the relevance of retrieved documents. The key innovation here is the 'grade_documents' node. We use an LLM to assess the semantic relevance of each retrieved document to the user's query. If a document is deemed irrelevant, we trigger a web search using Tavily Search as a fallback, ensuring that the final response is comprehensive and accurate. This conditional logic, managed by LangGraph, is what distinguishes this system. 
-
-We've also focused on modularity. Each step—retrieval, grading, web search, and generation—is encapsulated in its own node, making the system highly extensible. We're using ChromaDB for efficient vector storage and retrieval, and OpenAI's LLMs for both embedding and generation. 
-
-In essence, this project tackles the 'garbage in, garbage out' problem by actively filtering and augmenting the retrieved context. The LangGraph framework allows us to create a pipeline that dynamically adapts to the quality of retrieved information, resulting in more reliable and accurate responses compared to a basic RAG setup. This design shows an understanding of how to build complex LLM applications that address real-world challenges."
-
-<!-- TOC --><a name="10-future-enhancements"></a>
-## 10. Future Enhancements
-
-- Improved accuracy: Fine-tuning LLMs and refining the retrieval process.
-- Enhanced user interface: Developing a more intuitive and interactive interface.
-- Expanded functionality: Adding features such as document summarization and comparison.
-- Improved self-reflection: Implementing more sophisticated methods for evaluating and correcting LLM-generated answers.
-- Implement a more sophisticated document processing pipeline.
-- Explore different LLM architectures and fine-tuning techniques.
-- Develop a user-friendly interface for interacting with the bot.
-- Add error handling and logging.
-- Improve code documentation and testing.
-- Expand the knowledge base to cover a wider range of topics.
-- Incorporate user feedback to continuously improve the bot's performance.
-
-<!-- TOC --><a name="11-prerequisites"></a>
-## 11. Prerequisites
-
+Prerequisites
 - Python 3.10+
 -  OpenAI API key
 -  Tavily API key
--   Install required packages: `pip install -r requirements.txt`
-
-<!-- TOC --><a name="12-setup"></a>
-## 12. Setup
+- Install required packages: `pip install -r requirements.txt`
 
 1.  Clone the repository.
 2.  Install the required packages: `pip install -r requirements.txt`
@@ -341,8 +307,8 @@ PYTHONPATH=/Users/junfanzhu/Desktop/langgraph
 
 
 
-<!-- TOC --><a name="13-code-explanation"></a>
-## 13. Code Explanation
+<!-- TOC --><a name="9-code-explanation"></a>
+## 9. Code Explanation
 
 * **`graph/chains/answer_grader.py`:**
     * `GradeAnswer` class: Defines the structure of the output for answer grading.
@@ -437,8 +403,8 @@ PYTHONPATH=/Users/junfanzhu/Desktop/langgraph
         * Stores embeddings in ChromaDB using `Chroma.from_documents`.
         * Creates a retriever from ChromaDB using `Chroma.as_retriever()`.
 
-<!-- TOC --><a name="14-how-it-works"></a>
-## 14. How it Works
+<!-- TOC --><a name="10-how-it-works"></a>
+## 10. How it Works
 
 1.  The user provides a question.
 2.  The `question_router` determines whether to use the vectorstore or web search based on the question.
@@ -452,8 +418,8 @@ PYTHONPATH=/Users/junfanzhu/Desktop/langgraph
 10. If the answer addresses the question, it is returned to the user.
 11. If the answer does not address the question, the process repeats from step 5 with a web search.
 
-<!-- TOC --><a name="15-crucial-functions"></a>
-## 15. Crucial Functions
+<!-- TOC --><a name="11-crucial-functions"></a>
+## 11. Crucial Functions
 
 - **`grade_documents(state: GraphState)`**
     -   This function is crucial because it acts as a quality control mechanism for the retrieved documents.
@@ -487,15 +453,39 @@ PYTHONPATH=/Users/junfanzhu/Desktop/langgraph
     -   If the answer does not address the question, the function returns "not useful," triggering a web search to augment the context and improve the answer. This ensures that the system can adapt to situations where the initial information retrieval is not sufficient to answer the user's question.
     -   The function's use of structured LLM output through the `GradeHallucination` and `GradeAnswer` classes ensures that the grading process is consistent and reliable.
       
-<!-- TOC --><a name="16-future-improvements"></a>
-## 16. Future Improvements
+<!-- TOC --><a name="12-future-improvements"></a>
+## 12. Future Improvements
 
+Ideas
 - LangGraph has a persistence layer via checkpoint object (save the state after each node execution, in persistence storage, e.g. SQLite). Can interrupt the graph and checkpoint the state of the graph and stop to get human feedback, and resume graph execution from the stop point.
 - Create conditional branches for parallel node execution
 - Use Docker to deploy to LangGraph Cloud, or use LangGraph Studio, LangGraph API to build LLM applications without frontend
 
-<!-- TOC --><a name="17-summary"></a>
-## 17. Summary
+Overall
+- Improved accuracy: Fine-tuning LLMs and refining the retrieval process.
+- Enhanced user interface: Developing a more intuitive and interactive interface.
+- Expanded functionality: Adding features such as document summarization and comparison.
+- Improved self-reflection: Implementing more sophisticated methods for evaluating and correcting LLM-generated answers.
+- Implement a more sophisticated document processing pipeline.
+- Explore different LLM architectures and fine-tuning techniques.
+- Develop a user-friendly interface for interacting with the bot.
+- Add error handling and logging.
+- Improve code documentation and testing.
+- Expand the knowledge base to cover a wider range of topics.
+- Incorporate user feedback to continuously improve the bot's performance.
+
+<!-- TOC --><a name="13-summary"></a>
+## 13. Summary
+
+This project offers a novel approach to documentation access and retrieval by incorporating a self-reflection workflow. By combining LLMs with a graph database and adaptive routing, it provides an efficient and user-friendly way to find accurate and relevant answers to questions. While there are challenges to overcome, the potential benefits are significant.
+
+The core of this project is to build a robust and reliable question-answering system using Retrieval Augmented Generation, but with a focus on mitigating common LLM challenges like hallucinations and irrelevant responses. We've implemented an advanced RAG pipeline that goes beyond basic retrieval. 
+
+First, we leverage LangGraph to orchestrate a stateful workflow, which allows us to manage complex interactions between different components. This is crucial because we're not just retrieving and generating; we're also grading the relevance of retrieved documents. The key innovation here is the 'grade_documents' node. We use an LLM to assess the semantic relevance of each retrieved document to the user's query. If a document is deemed irrelevant, we trigger a web search using Tavily Search as a fallback, ensuring that the final response is comprehensive and accurate. This conditional logic, managed by LangGraph, is what distinguishes this system. 
+
+We've also focused on modularity. Each step—retrieval, grading, web search, and generation—is encapsulated in its own node, making the system highly extensible. We're using ChromaDB for efficient vector storage and retrieval, and OpenAI's LLMs for both embedding and generation. 
+
+In essence, this project tackles the 'garbage in, garbage out' problem by actively filtering and augmenting the retrieved context. The LangGraph framework allows us to create a pipeline that dynamically adapts to the quality of retrieved information, resulting in more reliable and accurate responses compared to a basic RAG setup. This design shows an understanding of how to build complex LLM applications that address real-world challenges."
 
 <!-- TOC --><a name="project-highlights"></a>
 ### Project Highlights
