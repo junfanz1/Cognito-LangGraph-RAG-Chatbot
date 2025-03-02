@@ -12,7 +12,7 @@
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
-- [1. Purpose of the Project](#1-purpose-of-the-project)
+- [1. Purpose of Project](#1-purpose-of-project)
 - [2. Input and Output](#2-input-and-output)
 - [3. LLM Technology Stack](#3-llm-technology-stack)
 - [4. Challenges and Difficulties](#4-challenges-and-difficulties)
@@ -34,11 +34,11 @@
 
 
 <!-- TOC --><a name="1-purpose-of-the-project"></a>
-## 1. Purpose of the Project
+## 1. Purpose of Project
 
 This project implements an advanced Retrieval Augmented Generation (RAG) workflow to enhance question-answering accuracy and reduce LLM hallucinations. It leverages LangGraph to create a stateful, multi-step process that includes document retrieval, relevance grading, and web search fallback. This project aims to create a documentation bot that can answer user questions based on provided documentation. It leverages Large Language Models (LLMs), a graph database, and a novel self-reflection workflow to efficiently store, retrieve, and validate information.
 
-The primary goal of this project is to streamline the process of accessing and understanding documentation. By utilizing LLMs, a graph database, and a self-reflection workflow, the bot can provide accurate and relevant answers to user queries, even if they are complex or phrased differently from the original documentation. The bot also aims to minimize hallucinations and ensure that the generated answers are grounded in the provided documentation.
+Abstract: The primary goal of this project is to streamline the process of accessing and understanding documentation. By utilizing LLMs, a graph database, and a self-reflection workflow, the bot can provide accurate and relevant answers to user queries, even if they are complex or phrased differently from the original documentation. The bot also aims to minimize hallucinations and ensure that the generated answers are grounded in the provided documentation.
 
 <!-- TOC --><a name="2-input-and-output"></a>
 ## 2. Input and Output
