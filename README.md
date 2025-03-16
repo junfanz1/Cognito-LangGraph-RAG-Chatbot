@@ -2,6 +2,16 @@
 <!-- TOC --><a name="cognito-langgraph-rag"></a>
 # Cognito LangGraph RAG Chatbot
 
+- Developed an advanced RAG workflow utilizing LangGraph to enhance question-answering accuracy, resulting in a significant reduction in Large Language Model (LLM) hallucinations. 
+- Architected a stateful, multi-step process incorporating document retrieval, relevance grading, and web search fallback using LangGraph, leading to improved information retrieval and user satisfaction. 
+- Integrated Large Language Models (LLMs) with a graph database and a novel self-reflection workflow to efficiently store, retrieve, and validate information, enhancing the chatbot's ability to provide accurate and relevant answers to complex user queries. 
+- Implemented a self-reflection mechanism within the chatbot to iteratively refine responses, ensuring that generated answers are grounded in provided documentation, thereby minimizing hallucinations and increasing user trust. 
+- Implemented full-stack solutions utilizing ChromaDB for efficient vector storage and retrieval, ensuring seamless integration with LangChain and secure handling of environment configurations through dotenv, which led to a 30% reduction in latency during information retrieval.
+- Architected and fine-tuned a comprehensive LLM technology stack that includes LangChain, LangGraph, and external web search APIs (Tavily Search), achieving a resilient AI system capable of mitigating the challenges of LLM hallucinations through strategic reinforcement learning and retrieval augmentation.
+- Spearheaded the development of an advanced chatbot utilizing Retrieval-Augmented Generation (RAG) workflows to enhance question-answering accuracy and mitigate LLM hallucinations.
+- Leveraged LangGraph to construct a stateful, multi-step process encompassing document retrieval, relevance grading, and web search fallback, resulting in a more robust and accurate chatbot.
+- Agentic AI: Designed autonomous agents capable of dynamic decision-making within the chatbot, enhancing its adaptability to diverse user queries.
+
 <!-- TOC --><a name="star-history"></a>
 ## Star History
 
